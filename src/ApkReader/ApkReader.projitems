@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>428a1136-05b3-45ca-bcbe-fea7232b235a</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ApkReader</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ApkInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApkManifest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApkReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ApkResourceFinder.cs" />
+  </ItemGroup>
+</Project>
