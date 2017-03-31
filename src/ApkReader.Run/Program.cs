@@ -48,7 +48,7 @@ namespace ApkReader.Run
                     }
                     if (dataAndroidManifest != null && dataResources != null)
                     {
-                        var apkReader = new Iteedee.ApkReader.ApkReader();
+                        var apkReader = new ApkReader();
                         var info = apkReader.ExtractInfo(dataAndroidManifest, dataResources);
                         Console.WriteLine($"Package Name: {info.PackageName}");
                         Console.WriteLine($"Version Name: {info.VersionName}");

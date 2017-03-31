@@ -3,7 +3,7 @@ using System.Text;
 
 //Source: http://stackoverflow.com/a/19063830/2554459
 
-namespace Iteedee.ApkReader
+namespace ApkReader
 {
     public class ApkManifest
     {

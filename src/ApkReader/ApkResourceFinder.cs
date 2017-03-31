@@ -5,7 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
-namespace Iteedee.ApkReader
+namespace ApkReader
 {
     public class ApkResourceFinder
     {

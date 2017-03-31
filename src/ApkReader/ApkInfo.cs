@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Iteedee.ApkReader
+namespace ApkReader
 {
     public class ApkInfo
     {

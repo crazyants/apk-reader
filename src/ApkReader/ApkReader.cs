@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
 
-namespace Iteedee.ApkReader
+namespace ApkReader
 {
     public class ApkReader
     {
