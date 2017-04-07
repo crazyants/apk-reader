@@ -13,5 +13,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ApkManifest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApkReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApkResourceFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
   </ItemGroup>
 </Project>
