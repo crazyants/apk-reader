@@ -159,8 +159,7 @@ namespace ApkReader
             {
                 if (id.StartsWith("@android:"))
                 {
-                    _verIcn[ICN_ID] = "@"
-                                      + id.Substring("@android:".Length);
+                    _verIcn[ICN_ID] = "@" + id.Substring("@android:".Length);
                 }
                 else
                 {
@@ -178,7 +177,7 @@ namespace ApkReader
                 }
 
                 var finder = new ApkResourceFinder();
-                info.ResStrings = finder.ProcessResourceTable(info.ResourcesFileBytes, resId);
+                info.ResStrings = finder.ProcessResourceTable(info.ResourcesFileBytes);
 
                 if (!_verIcn[VER_ID].Equals(""))
                 {
@@ -228,7 +227,7 @@ namespace ApkReader
                                         + _verIcn[ICN_ID]);
                 }
 
-                if (!_verIcn[LABEL_ID].Equals(""))
+                if (!string.IsNullOrEmpty(_verIcn[LABEL_ID]))
                 {
                     List<string> labels = null;
                     if (info.ResStrings.ContainsKey(_verIcn[LABEL_ID]))

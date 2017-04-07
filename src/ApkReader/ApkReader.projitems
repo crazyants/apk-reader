@@ -14,5 +14,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)ApkReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ApkResourceFinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResChunkHeader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResStringPoolHeader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResTableConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResTableEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResTableHeader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResTableMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResTableMapEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResTablePackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResTableType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResTableTypeSpec.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResValue.cs" />
   </ItemGroup>
 </Project>

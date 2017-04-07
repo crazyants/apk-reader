@@ -17,11 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkReader.Run", "src\ApkRea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkReader.Net45", "src\ApkReader.Net45\ApkReader.Net45.csproj", "{A46ED14F-67B5-422E-967F-19783E72772D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4AA5A812-51C3-487A-B349-CEA203F7FB20}"
-	ProjectSection(SolutionItems) = preProject
-		build\ApkReader.nuspec = build\ApkReader.nuspec
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		src\ApkReader\ApkReader.projitems*{30bc2f0d-0797-4a55-9717-0d14a6e60de8}*SharedItemsImports = 4

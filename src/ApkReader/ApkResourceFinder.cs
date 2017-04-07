@@ -60,7 +60,7 @@ namespace ApkReader
 
         private string[] _valueStringPool;
 
-        public Dictionary<string, List<string>> ProcessResourceTable(byte[] data, List<string> resIdList)
+        public Dictionary<string, List<string>> ProcessResourceTable(byte[] data)
         {
             _responseMap = new Dictionary<string, List<string>>();
 
