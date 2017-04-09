@@ -25,9 +25,8 @@ namespace ApkReader
             var xmlStringBuilder = new StringBuilder();
             using (var sw = new StringWriter(xmlStringBuilder))
             {
-                using (var xmlTextWriter = new XmlTextWriter(sw))
+                using (var xmlTextWriter = XmlWriter.Create(sw))
                 {
-                    xmlTextWriter.Namespaces = true;
                     XmlNamespace xmlNamespace = null;
                     do
                     {
