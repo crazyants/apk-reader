@@ -9,21 +9,43 @@
     <Import_RootNamespace>ApkReader</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ApkInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ApkManifest.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ApkReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ApkResourceFinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResChunkHeader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResStringPoolHeader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResTableConfig.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResTableEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResTableHeader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResTableMap.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResTableMapEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResTablePackage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResTableType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResTableTypeSpec.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ResValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BinaryXmlConvert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PublicValuesReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResWriter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResChunk_header.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResResourceMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResStringPool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResStringPool_header.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResStringPool_ref.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResStringPool_span.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResTable_config.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResTable_entry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResTable_header.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResTable_map.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResTable_map_entry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResTable_package.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResTable_ref.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResTable_type.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResTable_typeSpec.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResXmlParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResXMLTree_attrExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResXMLTree_attribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResXMLTree_cdataExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResXMLTree_endElementExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResXMLTree_header.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResXMLTree_namespaceExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResXMLTree_node.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\ResXMLTree_startelement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Res\Res_value.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\BoundedStream.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\Helper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Values\public.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Values\" />
   </ItemGroup>
 </Project>
