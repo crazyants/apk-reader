@@ -5,11 +5,12 @@
 // of the MIT license.  See the LICENSE file for details.
 
 using System;
+using System.Drawing;
 
 namespace ApkReader.Res
 {
 #if !NETSTANDARD1_3
-    using System.Drawing;
+    
     [Serializable]
 #endif
     public class Res_value
@@ -49,7 +50,7 @@ namespace ApkReader.Res
             {
                 return new ResTable_ref
                 {
-                    Ident = RawData == 0xFFFFFFFFu ? (uint?)null : RawData
+                    Ident = RawData == 0xFFFFFFFFu ? (uint?) null : RawData
                 };
             }
             set { RawData = value.Ident ?? 0xFFFFFFFFu; }
@@ -70,7 +71,7 @@ namespace ApkReader.Res
             {
                 return new ResStringPool_ref
                 {
-                    Index = RawData == 0xFFFFFFFFu ? (uint?)null : RawData
+                    Index = RawData == 0xFFFFFFFFu ? (uint?) null : RawData
                 };
             }
             set { RawData = value.Index ?? 0xFFFFFFFFu; }
@@ -93,8 +94,8 @@ namespace ApkReader.Res
         /// </summary>
         public int IntValue
         {
-            get { return (int)RawData; }
-            set { RawData = (uint)value; }
+            get { return (int) RawData; }
+            set { RawData = (uint) value; }
         }
 
         /// <summary>
@@ -129,7 +130,7 @@ namespace ApkReader.Res
                     bytes[1],
                     bytes[0]);
             }
-            set { RawData = BitConverter.ToUInt32(new[] { value.B, value.G, value.R, value.A }, 0); }
+            set { RawData = BitConverter.ToUInt32(new[] {value.B, value.G, value.R, value.A}, 0); }
         }
 
 
@@ -139,8 +140,8 @@ namespace ApkReader.Res
         /// </summary>
         public DimensionUnit ComplexDimensionUnit
         {
-            get { return (DimensionUnit)(RawData & 0xFu); }
-            set { RawData = (RawData & ~0xFu) | ((uint)value & 0xFu); }
+            get { return (DimensionUnit) (RawData & 0xFu); }
+            set { RawData = (RawData & ~0xFu) | ((uint) value & 0xFu); }
         }
 
         /// <summary>
@@ -149,8 +150,8 @@ namespace ApkReader.Res
         /// </summary>
         public FractionUnit ComplexFractionUnit
         {
-            get { return (FractionUnit)(RawData & 0xFu); }
-            set { RawData = (RawData & ~0xFu) | ((uint)value & 0xFu); }
+            get { return (FractionUnit) (RawData & 0xFu); }
+            set { RawData = (RawData & ~0xFu) | ((uint) value & 0xFu); }
         }
 
         /// <summary>
@@ -163,7 +164,7 @@ namespace ApkReader.Res
             get
             {
                 var radix = (RawData & 0x30u) >> 4;
-                var mantissa = ((int)RawData & ~0xFF) >> 8; // MSB -> sign
+                var mantissa = ((int) RawData & ~0xFF) >> 8; // MSB -> sign
                 switch (radix)
                 {
                     case 0: // 23p0
@@ -186,29 +187,29 @@ namespace ApkReader.Res
                 if (abs < 1f)
                 {
                     radix = 3; // 0p23
-                    mantissa = (int)(abs * 8388608f + 0.5f);
+                    mantissa = (int) (abs * 8388608f + 0.5f);
                 }
                 else if (abs < 256f)
                 {
                     radix = 2; // 8p15
-                    mantissa = (int)(abs * 32768f + 0.5f);
+                    mantissa = (int) (abs * 32768f + 0.5f);
                 }
                 else if (abs < 65536f)
                 {
                     radix = 2; // 16p7
-                    mantissa = (int)(abs * 128f + 0.5f);
+                    mantissa = (int) (abs * 128f + 0.5f);
                 }
                 else if (abs < 8388608f)
                 {
                     radix = 1; // 23p0
-                    mantissa = (int)(abs + 0.5f);
+                    mantissa = (int) (abs + 0.5f);
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("value", "Too large to store in a complex field");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Too large to store in a complex field");
                 }
                 mantissa *= sign;
-                RawData = (uint)(mantissa << 8) | (radix << 4) | (RawData & 0xFu);
+                RawData = (uint) (mantissa << 8) | (radix << 4) | (RawData & 0xFu);
             }
         }
     }

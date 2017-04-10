@@ -60,5 +60,8 @@
       <Name>ApkReader.Net40</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="wx.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
