@@ -8,9 +8,8 @@ using System;
 namespace ApkReader.Res
 {
     /// <summary>
-    /// Not sure this class is correct, since the original code dealing 
-    /// with this is pretty cryptic.
-    /// TODO: Check this, and remove this comment.
+    ///     Not sure this class is correct, since the original code dealing
+    ///     with this is pretty cryptic.
     /// </summary>
 #if !NETSTANDARD1_3
     [Serializable]
@@ -59,7 +58,10 @@ namespace ApkReader.Res
         {
             get
             {
-                if (MetaName != MapMetaAttributes.ATTR_TYPE) return null;
+                if (MetaName != MapMetaAttributes.ATTR_TYPE)
+                {
+                    return null;
+                }
                 return (MapAllowedTypes?) Value.RawData;
             }
             set
@@ -81,7 +83,10 @@ namespace ApkReader.Res
         {
             get
             {
-                if (MetaName != MapMetaAttributes.ATTR_L10N) return null;
+                if (MetaName != MapMetaAttributes.ATTR_L10N)
+                {
+                    return null;
+                }
                 return (MapL10N?) Value.RawData;
             }
             set

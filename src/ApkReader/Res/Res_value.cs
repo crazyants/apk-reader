@@ -5,12 +5,15 @@
 // of the MIT license.  See the LICENSE file for details.
 
 using System;
+#if !NETSTANDARD1_3
 using System.Drawing;
+
+#endif
 
 namespace ApkReader.Res
 {
 #if !NETSTANDARD1_3
-    
+
     [Serializable]
 #endif
     public class Res_value
@@ -46,14 +49,11 @@ namespace ApkReader.Res
         /// </remarks>
         public ResTable_ref ReferenceValue
         {
-            get
+            get => new ResTable_ref
             {
-                return new ResTable_ref
-                {
-                    Ident = RawData == 0xFFFFFFFFu ? (uint?) null : RawData
-                };
-            }
-            set { RawData = value.Ident ?? 0xFFFFFFFFu; }
+                Ident = RawData == 0xFFFFFFFFu ? (uint?) null : RawData
+            };
+            set => RawData = value.Ident ?? 0xFFFFFFFFu;
         }
 
         /// <summary>
@@ -67,14 +67,11 @@ namespace ApkReader.Res
         /// </remarks>
         public ResStringPool_ref StringValue
         {
-            get
+            get => new ResStringPool_ref
             {
-                return new ResStringPool_ref
-                {
-                    Index = RawData == 0xFFFFFFFFu ? (uint?) null : RawData
-                };
-            }
-            set { RawData = value.Index ?? 0xFFFFFFFFu; }
+                Index = RawData == 0xFFFFFFFFu ? (uint?) null : RawData
+            };
+            set => RawData = value.Index ?? 0xFFFFFFFFu;
         }
 
         /// <summary>
@@ -83,8 +80,8 @@ namespace ApkReader.Res
         /// </summary>
         public float FloatValue
         {
-            get { return BitConverter.ToSingle(BitConverter.GetBytes(RawData), 0); }
-            set { RawData = BitConverter.ToUInt32(BitConverter.GetBytes(value), 0); }
+            get => BitConverter.ToSingle(BitConverter.GetBytes(RawData), 0);
+            set => RawData = BitConverter.ToUInt32(BitConverter.GetBytes(value), 0);
         }
 
         /// <summary>
@@ -94,8 +91,8 @@ namespace ApkReader.Res
         /// </summary>
         public int IntValue
         {
-            get { return (int) RawData; }
-            set { RawData = (uint) value; }
+            get => (int) RawData;
+            set => RawData = (uint) value;
         }
 
         /// <summary>
@@ -110,7 +107,7 @@ namespace ApkReader.Res
                 return Color.FromArgb(color.A, color.R, color.G, color.B);
             }
 
-            set { ColorValue = Color.FromArgb(value.A, value.R, value.G, value.B); }
+            set => ColorValue = Color.FromArgb(value.A, value.R, value.G, value.B);
         }
 
         /// <summary>
@@ -130,7 +127,7 @@ namespace ApkReader.Res
                     bytes[1],
                     bytes[0]);
             }
-            set { RawData = BitConverter.ToUInt32(new[] {value.B, value.G, value.R, value.A}, 0); }
+            set => RawData = BitConverter.ToUInt32(new[] {value.B, value.G, value.R, value.A}, 0);
         }
 
 
@@ -140,8 +137,8 @@ namespace ApkReader.Res
         /// </summary>
         public DimensionUnit ComplexDimensionUnit
         {
-            get { return (DimensionUnit) (RawData & 0xFu); }
-            set { RawData = (RawData & ~0xFu) | ((uint) value & 0xFu); }
+            get => (DimensionUnit) (RawData & 0xFu);
+            set => RawData = (RawData & ~0xFu) | ((uint) value & 0xFu);
         }
 
         /// <summary>
@@ -150,8 +147,8 @@ namespace ApkReader.Res
         /// </summary>
         public FractionUnit ComplexFractionUnit
         {
-            get { return (FractionUnit) (RawData & 0xFu); }
-            set { RawData = (RawData & ~0xFu) | ((uint) value & 0xFu); }
+            get => (FractionUnit) (RawData & 0xFu);
+            set => RawData = (RawData & ~0xFu) | ((uint) value & 0xFu);
         }
 
         /// <summary>
@@ -274,6 +271,7 @@ namespace ApkReader.Res
         /// <see cref="FractionUnit" />
         /// .
         TYPE_FRACTION = 0x06,
+
         //TYPE_FIRST_INT = 0x10,
         /// Integer rendered in decimal.
         TYPE_INT_DEC = 0x10,
@@ -283,6 +281,7 @@ namespace ApkReader.Res
 
         /// Integer rendered as a boolean.
         TYPE_INT_BOOLEAN = 0x12,
+
         //TYPE_FIRST_COLOR_INT = 0x1c,
         /// <see cref="Color" />
         /// value rendered as #AARRGGBB
@@ -299,6 +298,7 @@ namespace ApkReader.Res
         /// <see cref="Color" />
         /// value rendered as #RGB
         TYPE_INT_COLOR_RGB4 = 0x1f
+
         //TYPE_LAST_COLOR_INT = 0x1f,
         //TYPE_LAST_INT = 0x1f
     }

@@ -8,6 +8,7 @@ using System;
 namespace ApkReader.Res
 {
 #if !NETSTANDARD1_3
+
     [Serializable]
 #endif
     public class ResTable_entry
@@ -21,6 +22,6 @@ namespace ApkReader.Res
     public enum EntryFlags
     {
         FLAG_COMPLEX = 0x0001,
-        FLAG_PUBLIC = 0x0002,
+        FLAG_PUBLIC = 0x0002
     }
 }

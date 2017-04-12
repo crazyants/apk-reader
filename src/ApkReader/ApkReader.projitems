@@ -9,8 +9,13 @@
     <Import_RootNamespace>ApkReader</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ApkReaderException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ArscReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BinaryXmlConvert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ArscFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ArscPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ArscTable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PublicValuesReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ResReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ResWriter.cs" />

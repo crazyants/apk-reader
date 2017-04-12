@@ -44,7 +44,7 @@ namespace ApkReader
             {
                 Type = (ResourceType)ReadUInt16(),
                 HeaderSize = ReadUInt16(),
-                Size = ReadUInt32(),
+                Size = ReadUInt32()
             };
         }
 
@@ -57,16 +57,16 @@ namespace ApkReader
                 StyleCount = ReadUInt32(),
                 Flags = (StringPoolFlags)ReadUInt32(),
                 StringStart = ReadUInt32(),
-                StylesStart = ReadUInt32(),
+                StylesStart = ReadUInt32()
             };
         }
 
         public virtual ResStringPool_ref ReadResStringPool_ref()
         {
-            uint index = ReadUInt32();
+            var index = ReadUInt32();
             return new ResStringPool_ref
             {
-                Index = index == 0xFFFFFFFFu ? (uint?)null : index,
+                Index = index == 0xFFFFFFFFu ? (uint?)null : index
             };
         }
 
@@ -80,8 +80,8 @@ namespace ApkReader
                 Size = ReadUInt32(),
                 IMSI_MCC = ReadUInt16(),
                 IMSI_MNC = ReadUInt16(),
-                LocaleLanguage = new char[] { (char)ReadByte(), (char)ReadByte() },
-                LocaleCountry = new char[] { (char)ReadByte(), (char)ReadByte() },
+                LocaleLanguage = new[] { (char)ReadByte(), (char)ReadByte() },
+                LocaleCountry = new[] { (char)ReadByte(), (char)ReadByte() },
                 ScreenTypeOrientation = (ConfigOrientation)ReadByte(),
                 ScreenTypeTouchscreen = (ConfigTouchscreen)ReadByte(),
                 ScreenTypeDensity = (ConfigDensity)ReadUInt16(),
@@ -151,7 +151,7 @@ namespace ApkReader
             {
                 Size = ReadUInt16(),
                 Flags = (EntryFlags)ReadUInt16(),
-                Key = ReadResStringPool_ref(),
+                Key = ReadResStringPool_ref()
             };
         }
 
@@ -160,7 +160,7 @@ namespace ApkReader
             return new ResTable_header
             {
                 Header = header,
-                PackageCount = ReadUInt32(),
+                PackageCount = ReadUInt32()
             };
         }
 
@@ -169,7 +169,7 @@ namespace ApkReader
             return new ResTable_map
             {
                 Name = ReadResTable_ref(),
-                Value = ReadRes_value(),
+                Value = ReadRes_value()
             };
         }
 
@@ -181,7 +181,7 @@ namespace ApkReader
                 Flags = (EntryFlags)ReadUInt16(),
                 Key = ReadResStringPool_ref(),
                 Parent = ReadResTable_ref(),
-                Count = ReadUInt32(),
+                Count = ReadUInt32()
             };
         }
 
@@ -195,7 +195,7 @@ namespace ApkReader
                 TypeStrings = ReadUInt32(),
                 LastPublicType = ReadUInt32(),
                 KeyStrings = ReadUInt32(),
-                LastPublicKey = ReadUInt32(),
+                LastPublicKey = ReadUInt32()
             };
 
             if (header.HeaderSize > 284)
@@ -206,7 +206,7 @@ namespace ApkReader
             if (header.HeaderSize > 292)
             {
                 // New fields have been added, which we don't know about.
-                ReadBytes((int)header.HeaderSize - 292);
+                ReadBytes(header.HeaderSize - 292);
             }
 
             return value;
@@ -214,10 +214,10 @@ namespace ApkReader
 
         public virtual ResTable_ref ReadResTable_ref()
         {
-            uint ident = ReadUInt32();
+            var ident = ReadUInt32();
             return new ResTable_ref
             {
-                Ident = ident == 0xFFFFFFFFu ? (uint?)null : ident,
+                Ident = ident == 0xFFFFFFFFu ? (uint?)null : ident
             };
         }
 
@@ -227,7 +227,7 @@ namespace ApkReader
             // larger and more data. So we need to let the ReadResTable_config
             // method know how much data it can read to prevent it from being
             // too greedy.
-            ushort configSize = header.HeaderSize;
+            var configSize = header.HeaderSize;
             configSize -= ResChunk_header.DataSize;
             configSize -= 12; // RawId, EntryCount, EntriesStart
 
@@ -237,7 +237,7 @@ namespace ApkReader
                 RawID = ReadUInt32(),
                 EntryCount = ReadUInt32(),
                 EntriesStart = ReadUInt32(),
-                Config = ReadResTable_config(configSize),
+                Config = ReadResTable_config(configSize)
             };
         }
 
@@ -247,7 +247,7 @@ namespace ApkReader
             {
                 Header = header,
                 RawID = ReadUInt32(),
-                EntryCount = ReadUInt32(),
+                EntryCount = ReadUInt32()
             };
         }
 
@@ -262,7 +262,7 @@ namespace ApkReader
                 AttributeCount = ReadUInt16(),
                 IdIndex = ReadUInt16(),
                 ClassIndex = ReadUInt16(),
-                StyleIndex = ReadUInt16(),
+                StyleIndex = ReadUInt16()
             };
         }
 
@@ -282,7 +282,7 @@ namespace ApkReader
             return new ResXMLTree_cdataExt
             {
                 Data = ReadResStringPool_ref(),
-                TypedData = ReadRes_value(),
+                TypedData = ReadRes_value()
             };
         }
 
@@ -291,7 +291,7 @@ namespace ApkReader
             return new ResXMLTree_endElementExt
             {
                 Namespace = ReadResStringPool_ref(),
-                Name = ReadResStringPool_ref(),
+                Name = ReadResStringPool_ref()
             };
         }
 
@@ -299,7 +299,7 @@ namespace ApkReader
         {
             return new ResXMLTree_header
             {
-                Header = header,
+                Header = header
             };
         }
 
@@ -309,7 +309,7 @@ namespace ApkReader
             return new ResXMLTree_namespaceExt
             {
                 Prefix = ReadResStringPool_ref(),
-                Uri = ReadResStringPool_ref(),
+                Uri = ReadResStringPool_ref()
             };
         }
 
@@ -319,7 +319,7 @@ namespace ApkReader
             {
                 Header = header,
                 LineNumber = ReadUInt32(),
-                Comment = ReadResStringPool_ref(),
+                Comment = ReadResStringPool_ref()
             };
         }
 
@@ -335,14 +335,14 @@ namespace ApkReader
             // Offsets of the string data, relative to header.StringStart
             var stringIndices = new List<uint>();
 
-            for (int i = 0; i < header.StringCount; i++)
+            for (var i = 0; i < header.StringCount; i++)
             {
                 stringIndices.Add(ReadUInt32());
             }
 
             // Offset of the style data, relative to header.StylesStart
             var styleIndices = new List<uint>();
-            for (int i = 0; i < header.StyleCount; i++)
+            for (var i = 0; i < header.StyleCount; i++)
             {
                 styleIndices.Add(ReadUInt32());
             }
@@ -357,36 +357,37 @@ namespace ApkReader
             // Fetch the block which contains the string. If a styles section is
             // present, the strings block ends there; otherwise, it runs to the end
             // of this entry.
-            uint stringsEnd = header.StyleCount > 0 ? header.StylesStart : header.Header.Size;
-            byte[] rawStringData = ReadBytes((int)stringsEnd - (int)header.StringStart);
+            var stringsEnd = header.StyleCount > 0 ? header.StylesStart : header.Header.Size;
+            var rawStringData = ReadBytes((int)stringsEnd - (int)header.StringStart);
 
             bytesLeft -= rawStringData.Length;
 
-            bool isUtf8 = (header.Flags & StringPoolFlags.UTF8_FLAG) == StringPoolFlags.UTF8_FLAG;
+            var isUtf8 = (header.Flags & StringPoolFlags.UTF8_FLAG) == StringPoolFlags.UTF8_FLAG;
 
-            foreach (uint startingIndex in stringIndices)
+            foreach (var startingIndex in stringIndices)
             {
                 // The starting index specifies where the string starts.
                 // We can now read the string in either UTF8 or UTF16 format.
-                uint pos = startingIndex;
+                var pos = startingIndex;
                 if (isUtf8)
                 {
-                    uint charLen = Helper.DecodeLengthUtf8(rawStringData, ref pos);
-                    uint byteLen = Helper.DecodeLengthUtf8(rawStringData, ref pos);
-                    string item = Encoding.UTF8.GetString(rawStringData, (int)pos, (int)byteLen);
+                    var charLen = Helper.DecodeLengthUtf8(rawStringData, ref pos);
+                    var byteLen = Helper.DecodeLengthUtf8(rawStringData, ref pos);
+                    var item = Encoding.UTF8.GetString(rawStringData, (int)pos, (int)byteLen);
                     if (item.Length != charLen)
                     {
 #if !CORECLR
-                        Debug.WriteLine($"Warning: UTF-8 string length ({item.Length}) not matching specified length ({charLen}).");
+                        Debug.WriteLine(
+                            $"Warning: UTF-8 string length ({item.Length}) not matching specified length ({charLen}).");
 #endif
                     }
                     pool.StringData.Add(item);
                 }
                 else
                 {
-                    uint charLen = Helper.DecodeLengthUtf16(rawStringData, ref pos);
-                    uint byteLen = charLen * 2;
-                    string item = Encoding.Unicode.GetString(rawStringData, (int)pos, (int)byteLen);
+                    var charLen = Helper.DecodeLengthUtf16(rawStringData, ref pos);
+                    var byteLen = charLen * 2;
+                    var item = Encoding.Unicode.GetString(rawStringData, (int)pos, (int)byteLen);
                     pool.StringData.Add(item);
                 }
             }
@@ -394,16 +395,16 @@ namespace ApkReader
             // If styles are present, we should read them, too.
             if (header.StyleCount > 0)
             {
-                byte[] rawStyleData = ReadBytes((int)header.Header.Size - (int)header.StylesStart);
+                var rawStyleData = ReadBytes((int)header.Header.Size - (int)header.StylesStart);
 
-                foreach (uint startingIndex in styleIndices)
+                foreach (var startingIndex in styleIndices)
                 {
                     // At startingIndex, there are N entries defining the individual tags (b, i,...)
                     // that style the string at index i
                     // They are terminated by a value with value END (0xFFFFFFFF)
-                    List<ResStringPool_span> styleData = new List<ResStringPool_span>();
+                    var styleData = new List<ResStringPool_span>();
 
-                    int pos = (int)startingIndex;
+                    var pos = (int)startingIndex;
 
                     while (true)
                     {
@@ -413,12 +414,12 @@ namespace ApkReader
 
                         var span = new ResStringPool_span
                         {
-                            Name = new ResStringPool_ref()
+                            Name = new ResStringPool_ref
                             {
                                 Index = index == 0xFFFFFFFFu ? (uint?)null : index
                             },
                             FirstChar = firstChar,
-                            LastChar = lastChar,
+                            LastChar = lastChar
                         };
 
                         styleData.Add(span);
@@ -454,7 +455,7 @@ namespace ApkReader
         }
 
         public virtual ResXMLTree_startelement ReadResXMLTree_startelement(ResXMLTree_node node,
-                                                                           ResXMLTree_attrExt attrExt)
+            ResXMLTree_attrExt attrExt)
         {
             var element = new ResXMLTree_startelement
             {
@@ -463,9 +464,9 @@ namespace ApkReader
                 Attributes = new List<ResXMLTree_attribute>()
             };
 
-            uint bytesLeft = node.Header.Size - 0x24u;
+            var bytesLeft = node.Header.Size - 0x24u;
 
-            for (int i = 0; i < attrExt.AttributeCount; i++)
+            for (var i = 0; i < attrExt.AttributeCount; i++)
             {
                 element.Attributes.Add(ReadResXMLTree_attribute());
                 bytesLeft -= 0x14u;
@@ -491,7 +492,7 @@ namespace ApkReader
                 Header = header,
                 ResouceIds = new List<uint>()
             };
-            for (int pos = 8; pos < header.Size; pos += 4)
+            for (var pos = 8; pos < header.Size; pos += 4)
             {
                 result.ResouceIds.Add(ReadUInt32());
             }

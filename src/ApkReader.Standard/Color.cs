@@ -11,6 +11,7 @@ namespace ApkReader
         // Summary:
         //     Represents a color that is null.
         public static readonly Color Empty;
+
         //
         // Summary:
         //     Gets a system-defined color that has an ARGB value of #FF000000.
@@ -18,6 +19,7 @@ namespace ApkReader
         // Returns:
         //     A System.Drawing.Color representing a system-defined color.
         public static readonly Color Black = FromArgb(0, 0, 0);
+
         //
         // Summary:
         //     Gets a system-defined color that has an ARGB value of #FFFFFFFF.
@@ -25,6 +27,7 @@ namespace ApkReader
         // Returns:
         //     A System.Drawing.Color representing a system-defined color.
         public static readonly Color White = FromArgb(0xff, 0xff, 0xff);
+
         //
         // Summary:
         //     Gets a system-defined color.
@@ -40,6 +43,7 @@ namespace ApkReader
         // Returns:
         //     The alpha component value of this System.Drawing.Color.
         public byte A { get; set; }
+
         //
         // Summary:
         //     Gets the red component value of this System.Drawing.Color structure.
@@ -47,6 +51,7 @@ namespace ApkReader
         // Returns:
         //     The red component value of this System.Drawing.Color.
         public byte R { get; set; }
+
         //
         // Summary:
         //     Gets the green component value of this System.Drawing.Color structure.
@@ -54,6 +59,7 @@ namespace ApkReader
         // Returns:
         //     The green component value of this System.Drawing.Color.
         public byte G { get; set; }
+
         //
         // Summary:
         //     Gets the blue component value of this System.Drawing.Color structure.
@@ -61,6 +67,7 @@ namespace ApkReader
         // Returns:
         //     The blue component value of this System.Drawing.Color.
         public byte B { get; set; }
+
         //
         // Summary:
         //     Specifies whether this System.Drawing.Color structure is uninitialized.

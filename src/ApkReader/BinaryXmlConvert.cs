@@ -13,11 +13,6 @@ namespace ApkReader
 {
     public static class BinaryXmlConvert
     {
-        private class XmlNamespace
-        {
-            public String Uri { get; set; }
-            public String Prefix { get; set; }
-        }
         public static XmlDocument ToXmlDocument(Stream source)
         {
             var xml = new XmlDocument();
@@ -46,7 +41,7 @@ namespace ApkReader
                                 xmlNamespace = new XmlNamespace
                                 {
                                     Uri = parser.NamespaceUri,
-                                    Prefix = parser.NamespacePrefix,
+                                    Prefix = parser.NamespacePrefix
                                 };
                                 break;
                             case ResXmlParser.XmlParserEventCode.EndNamespace:
@@ -55,7 +50,8 @@ namespace ApkReader
                             case ResXmlParser.XmlParserEventCode.StartTag:
                                 if (xmlNamespace != null && parser.ElementNamespace == xmlNamespace.Uri)
                                 {
-                                    xmlTextWriter.WriteStartElement(xmlNamespace.Prefix, parser.ElementName, parser.ElementNamespace);
+                                    xmlTextWriter.WriteStartElement(xmlNamespace.Prefix, parser.ElementName,
+                                        parser.ElementNamespace);
                                 }
                                 else
                                 {
@@ -68,7 +64,8 @@ namespace ApkReader
                                         var attr = parser.GetAttribute(i);
                                         if (xmlNamespace != null && attr.Namespace == xmlNamespace.Uri)
                                         {
-                                            xmlTextWriter.WriteStartAttribute(xmlNamespace.Prefix, attr.Name, attr.Namespace);
+                                            xmlTextWriter.WriteStartAttribute(xmlNamespace.Prefix, attr.Name,
+                                                attr.Namespace);
                                         }
                                         else
                                         {
@@ -105,12 +102,12 @@ namespace ApkReader
                 case ValueType.TYPE_FLOAT:
                     return value.FloatValue.ToString("g");
                 case ValueType.TYPE_FRACTION:
-                    index0 = (int)value.ComplexFractionUnit;
-                    return $"{value.ComplexValue:g}{(index0 < 2 ? new[] { "%", "%p" }[index0] : "?")}";
+                    index0 = (int) value.ComplexFractionUnit;
+                    return $"{value.ComplexValue:g}{(index0 < 2 ? new[] {"%", "%p"}[index0] : "?")}";
                 case ValueType.TYPE_DIMENSION:
-                    index0 = (int)value.ComplexDimensionUnit;
+                    index0 = (int) value.ComplexDimensionUnit;
                     return
-                        $"{value.ComplexValue:g}{(index0 < 6 ? new[] { "px", "dip", "sp", "pt", "in", "mm" }[index0] : "?")}";
+                        $"{value.ComplexValue:g}{(index0 < 6 ? new[] {"px", "dip", "sp", "pt", "in", "mm"}[index0] : "?")}";
                 case ValueType.TYPE_INT_DEC:
                     return $"{value.IntValue:d}";
                 case ValueType.TYPE_INT_HEX:
@@ -139,6 +136,12 @@ namespace ApkReader
                 default:
                     return $"({value.DataType}:{value.RawData:x8})";
             }
+        }
+
+        private class XmlNamespace
+        {
+            public string Uri { get; set; }
+            public string Prefix { get; set; }
         }
     }
 }
