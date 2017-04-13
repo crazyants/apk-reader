@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml;
 using ApkReader.Arsc;
 using ApkReader.Res;
@@ -26,7 +27,7 @@ namespace ApkReader
                 {
                     var config = table.Config;
                     var local = config.GetLocal();
-                    if (!apkInfo.Locales.Contains(local))
+                    if (!String.IsNullOrEmpty(local) && !apkInfo.Locales.Contains(local))
                     {
                         apkInfo.Locales.Add(local);
                     }
@@ -146,6 +147,66 @@ namespace ApkReader
                                         break;
                                 }
                             }
+                        }
+                        var xnames = new List<String>();
+                        var ynames = new List<String>();
+                        foreach (XmlNode innerNode in node.ChildNodes)
+                        {
+                            switch (innerNode.LocalName)
+                            {
+                                case "activity":
+                                    var activityName = String.Empty;
+                                    if (innerNode.Attributes != null)
+                                    {
+                                        foreach (XmlAttribute innerNodeAttribute in innerNode.Attributes)
+                                        {
+                                            if (innerNodeAttribute.LocalName == "name")
+                                            {
+                                                activityName = innerNodeAttribute.Value;
+                                            }
+                                        }
+                                    }
+                                    if (!String.IsNullOrEmpty(activityName))
+                                    {
+                                        foreach (XmlNode intentFilterNode in innerNode.ChildNodes)
+                                        {
+                                            foreach (XmlNode endNode in intentFilterNode.ChildNodes)
+                                            {
+                                                if (endNode.Attributes != null)
+                                                {
+                                                    foreach (XmlAttribute endNodeAttribute in endNode.Attributes)
+                                                    {
+                                                        if (endNodeAttribute.LocalName == "name")
+                                                        {
+                                                            switch (endNodeAttribute.Value)
+                                                            {
+                                                                case "android.intent.action.MAIN":
+                                                                    xnames.Add(activityName);
+                                                                    break;
+                                                                case "android.intent.category.LAUNCHER":
+                                                                    ynames.Add(activityName);
+                                                                    break;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    break;
+                            }
+                        }
+                        var znames = new List<String>();
+                        foreach (var xname in xnames)
+                        {
+                            if (ynames.Contains(xname))
+                            {
+                                znames.Add(xname);
+                            }
+                        }
+                        if (znames.Count > 0)
+                        {
+                            apkInfo.LaunchableActivity = znames[0];
                         }
                         break;
                 }

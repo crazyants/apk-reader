@@ -9,7 +9,11 @@ namespace ApkReader.Run
         {
             var reader = new ApkReader();
             var info = reader.Read(@"D:\tmp\wx.apk");
-            var json = JsonConvert.SerializeObject(info);
+            Console.Clear();
+            var json = JsonConvert.SerializeObject(info,new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            });
             Console.WriteLine(json);
             Console.ReadLine();
         }

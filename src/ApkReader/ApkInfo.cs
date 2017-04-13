@@ -18,5 +18,6 @@ namespace ApkReader
         public bool HasIcon => Icons.Count > 0 || !string.IsNullOrEmpty(Icon);
         public List<string> Locales { get; } = new List<string>();
         public List<string> Densities { get; } = new List<string>();
+        public string LaunchableActivity { get; set; }
     }
 }
