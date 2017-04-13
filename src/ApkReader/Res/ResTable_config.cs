@@ -62,7 +62,7 @@ namespace ApkReader.Res
             {
                 arrs.Add(country);
             }
-            return string.Join("-", arrs);
+            return string.Join("-", arrs.ToArray());
         }
 
         #region Derived properties
