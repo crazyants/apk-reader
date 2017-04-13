@@ -5,6 +5,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 using System;
+using System.Collections.Generic;
 using ApkReader.Utils;
 
 namespace ApkReader.Res
@@ -47,6 +48,22 @@ namespace ApkReader.Res
         public byte ScreenLayout2 { get; set; }
         public byte ScreenConfigPad1 { get; set; }
         public ushort ScreenConfigPad2 { get; set; }
+
+        public string GetLocal()
+        {
+            var language = new string(LocaleLanguage).Trim('\0');
+            var country = new string(LocaleCountry).Trim('\0');
+            var arrs = new List<string>();
+            if (!string.IsNullOrEmpty(language))
+            {
+                arrs.Add(language);
+            }
+            if (!string.IsNullOrEmpty(country))
+            {
+                arrs.Add(country);
+            }
+            return string.Join("-", arrs);
+        }
 
         #region Derived properties
 

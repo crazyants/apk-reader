@@ -7,9 +7,11 @@ namespace ApkReader.Run
     {
         private static void Main(string[] args)
         {
-            var arsFile = ArscReader.Read(@"D:\tmp\wx - 副本\resources.arsc");
-            var json = JsonConvert.SerializeObject(arsFile);
+            var reader = new ApkReader();
+            var info = reader.Read(@"D:\tmp\wx.apk");
+            var json = JsonConvert.SerializeObject(info);
             Console.WriteLine(json);
+            Console.ReadLine();
         }
     }
 }

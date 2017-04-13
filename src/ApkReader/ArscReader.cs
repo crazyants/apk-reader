@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using ApkReader.Models;
+using ApkReader.Arsc;
 using ApkReader.Res;
 
 namespace ApkReader

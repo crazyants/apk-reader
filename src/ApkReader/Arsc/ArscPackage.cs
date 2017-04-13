@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ApkReader.Res;
 
-namespace ApkReader.Models
+namespace ApkReader.Arsc
 {
     public class ArscPackage
     {

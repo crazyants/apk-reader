@@ -9,10 +9,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\build\lib\</OutputPath>
     <DocumentationFile>..\..\build\lib\netstandard1.3\ApkReader.xml</DocumentationFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD1_3;INNER_ZIP</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_3</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_3;NETSTANDARD1_3;INNER_ZIP</DefineConstants>
   </PropertyGroup>
 
   <Import Project="..\ApkReader\ApkReader.projitems" Label="Shared" />
