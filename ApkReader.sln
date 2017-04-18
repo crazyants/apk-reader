@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ApkReader", "src\ApkReader\ApkReader.shproj", "{428A1136-05B3-45CA-BCBE-FEA7232B235A}"
 EndProject
@@ -16,13 +16,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkReader.Run", "src\ApkReader.Run\ApkReader.Run.csproj", "{CC319F0E-9FC6-4C04-B5CE-F9169F031060}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkReader.Net45", "src\ApkReader.Net45\ApkReader.Net45.csproj", "{A46ED14F-67B5-422E-967F-19783E72772D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ref", "ref", "{C6BB9829-9186-4953-A315-1E23E0023F0E}"
-	ProjectSection(SolutionItems) = preProject
-		ref\ResourceTypes.cpp = ref\ResourceTypes.cpp
-		ref\ResourceTypes.h = ref\ResourceTypes.h
-		ref\ResourceTypes_stucts.h = ref\ResourceTypes_stucts.h
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
