@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using ApkReader.Res;
 using ApkReader.Utils;
+using System.Diagnostics;
 
 namespace ApkReader
 {
@@ -157,7 +158,7 @@ namespace ApkReader
 
         public AttributeInfo ElementStyle => GetAttribute(ElementStyleIndex);
 
-        public uint AttributeCount => _attributes == null ? 0 : (uint) _attributes.Count;
+        public uint AttributeCount => _attributes == null ? 0 : (uint)_attributes.Count;
 
         public void Restart()
         {
@@ -183,7 +184,7 @@ namespace ApkReader
             }
             if (index < ResourceMap.ResouceIds.Count)
             {
-                var identifier = ResourceMap.ResouceIds[(int) index];
+                var identifier = ResourceMap.ResouceIds[(int)index];
                 if (PublicValuesReader.Values.ContainsKey(identifier))
                 {
                     return PublicValuesReader.Values[identifier];
@@ -278,15 +279,15 @@ namespace ApkReader
                         yield return XmlParserEventCode.Text;
                         break;
                     default:
-                        Console.WriteLine("Warning: Skipping chunk of type {0} (0x{1:x4})",
-                            header.Type, (int) header.Type);
+                        Debug.WriteLine(String.Format("Warning: Skipping chunk of type {0} (0x{1:x4})",
+                            header.Type, (int)header.Type));
                         break;
                 }
                 var junk = subStream.ReadFully();
                 if (junk.Length > 0)
                 {
-                    Console.WriteLine("Warning: Skipping {0} bytes at the end of a {1} (0x{2:x4}) chunk.",
-                        junk.Length, header.Type, (int) header.Type);
+                    Debug.WriteLine(String.Format("Warning: Skipping {0} bytes at the end of a {1} (0x{2:x4}) chunk.",
+                        junk.Length, header.Type, (int)header.Type));
                 }
             }
         }
@@ -301,7 +302,7 @@ namespace ApkReader
             {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
-            var attr = _attributes[(int) index];
+            var attr = _attributes[(int)index];
             return new AttributeInfo(this, attr);
         }
 
