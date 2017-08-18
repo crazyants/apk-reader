@@ -1,10 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <TargetFrameworks>net20;net35;net40;net45;net46;netstandard2.0</TargetFrameworks>
     <AssemblyName>ApkReader</AssemblyName>
     <RootNamespace>ApkReader</RootNamespace>
     <Version>2.0.1.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Soar360</Authors>
+    <Description>read apk info (package name etc..) with out appt.</Description>
+    <PackageProjectUrl>https://github.com/Soar360/apk-reader</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Soar360/apk-reader</RepositoryUrl>
+    <PackageTags>android,apk,apk reader,android,aapt</PackageTags>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net20'">
