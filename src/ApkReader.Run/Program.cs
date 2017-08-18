@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace ApkReader.Run
 {
@@ -8,8 +9,8 @@ namespace ApkReader.Run
         private static void Main(string[] args)
         {
             var reader = new ApkReader();
-            var info = reader.Read(@"E:\Downloads\迅雷下载\wacai__00000001_v11.14.0.0_259.apk");
-            var json = JsonConvert.SerializeObject(info,new JsonSerializerSettings
+            var info = reader.Read(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "com.qihoo.magic.apk"));
+            var json = JsonConvert.SerializeObject(info, new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented
             });

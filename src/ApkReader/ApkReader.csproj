@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net20;net35;net40;net45;net46;netstandard2.0</TargetFrameworks>
+    <AssemblyName>ApkReader</AssemblyName>
+    <RootNamespace>ApkReader</RootNamespace>
+    <Version>2.0.1.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net20'">
+    <DefineConstants>NET20</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
+    <DefineConstants>NET35</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
+    <DefineConstants>NET40</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
+    <DefineConstants>NET45;INNER_ZIP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net46'">
+    <DefineConstants>NET46;INNER_ZIP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <DefineConstants>NETSTANDARD20;INNER_ZIP</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net20'">
+    <PackageReference Include="DotNetZip" Version="1.10.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net35'">
+    <PackageReference Include="DotNetZip" Version="1.10.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net40'">
+    <PackageReference Include="DotNetZip" Version="1.10.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <Reference Include="System.IO.Compression" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net46'">
+    <Reference Include="System.IO.Compression" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Values\public.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Values\public.xml" />
+  </ItemGroup>
+</Project>
