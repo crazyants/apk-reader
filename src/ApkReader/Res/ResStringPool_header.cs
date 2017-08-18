@@ -6,11 +6,9 @@
 using System;
 
 namespace ApkReader.Res
-{
-#if !NETSTANDARD1_3
+{ 
 
-    [Serializable]
-#endif
+    [Serializable] 
     public class ResStringPool_header
     {
         public ResChunk_header Header { get; set; }

@@ -7,9 +7,7 @@ using System;
 
 namespace ApkReader.Res
 {
-#if !NETSTANDARD1_3
     [Serializable]
-#endif
     public class ResXMLTree_cdataExt
     {
         public ResStringPool_ref Data { get; set; }

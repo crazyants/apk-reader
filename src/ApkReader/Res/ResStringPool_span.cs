@@ -7,10 +7,7 @@ using System;
 
 namespace ApkReader.Res
 {
-#if !NETSTANDARD1_3
-
     [Serializable]
-#endif
     public class ResStringPool_span
     {
         public ResStringPool_ref Name { get; set; }

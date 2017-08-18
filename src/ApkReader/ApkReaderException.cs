@@ -2,10 +2,7 @@
 
 namespace ApkReader
 {
-#if !NETSTANDARD1_3
-
     [Serializable]
-#endif
     public class ApkReaderException : Exception
     {
         /// <devdoc>

@@ -4,11 +4,7 @@ using System.Text;
 using System.Xml;
 using ApkReader.Res;
 using ValueType = ApkReader.Res.ValueType;
-#if !NETSTANDARD1_3
 using System.Drawing;
-
-#endif
-
 namespace ApkReader
 {
     public static class BinaryXmlConvert

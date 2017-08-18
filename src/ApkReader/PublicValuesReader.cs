@@ -29,13 +29,7 @@ namespace ApkReader
                 {
                     if (_values == null)
                     {
-                        Assembly assembly = null;
-
-#if NETSTANDARD1_3
-                        assembly = typeof(PublicValuesReader).GetTypeInfo().Assembly;
-#else
-                        assembly = Assembly.GetExecutingAssembly();
-#endif
+                        var assembly = Assembly.GetExecutingAssembly();
                         var xml = new XmlDocument();
                         using (var stream = assembly.GetManifestResourceStream("ApkReader.Values.public.xml"))
                         {

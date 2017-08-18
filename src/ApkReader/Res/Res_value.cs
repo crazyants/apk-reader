@@ -4,18 +4,13 @@
 // This software may be modified and distributed under the terms
 // of the MIT license.  See the LICENSE file for details.
 
-using System;
-#if !NETSTANDARD1_3
-using System.Drawing;
-
-#endif
+using System; 
+using System.Drawing; 
 
 namespace ApkReader.Res
-{
-#if !NETSTANDARD1_3
+{ 
 
-    [Serializable]
-#endif
+    [Serializable] 
     public class Res_value
     {
         /// <summary>

@@ -11,9 +11,7 @@ namespace ApkReader.Res
     ///     Not sure this class is correct, since the original code dealing
     ///     with this is pretty cryptic.
     /// </summary>
-#if !NETSTANDARD1_3
     [Serializable]
-#endif
     public class ResTable_map
     {
         public ResTable_ref Name { get; set; }

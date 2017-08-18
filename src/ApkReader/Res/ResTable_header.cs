@@ -7,10 +7,7 @@ using System;
 
 namespace ApkReader.Res
 {
-#if !NETSTANDARD1_3
-
     [Serializable]
-#endif
     public class ResTable_header
     {
         public ResChunk_header Header { get; set; }

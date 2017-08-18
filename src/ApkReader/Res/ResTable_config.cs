@@ -10,10 +10,7 @@ using ApkReader.Utils;
 
 namespace ApkReader.Res
 {
-#if !NETSTANDARD1_3
-
     [Serializable]
-#endif
     public class ResTable_config
     {
         // Original properties
